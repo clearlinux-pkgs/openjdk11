@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.2+9
-Release  : 2
+Release  : 3
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Summary  : No detailed summary available
@@ -26,8 +26,8 @@ BuildRequires : libXi-dev
 BuildRequires : libXrender-dev
 BuildRequires : libXt-dev
 BuildRequires : libXtst-dev
-BuildRequires : openjdk10
-BuildRequires : openjdk10-dev
+BuildRequires : openjdk11
+BuildRequires : openjdk11-dev
 BuildRequires : zip
 
 %description
@@ -75,7 +75,7 @@ export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-chec
 export CXXFLAGS_JDK="$CXXFLAGS"
 export SYSDEFS="$CXXFLAGS"
 bash configure \
---with-boot-jdk=/usr/lib/jvm/java-1.10.0-openjdk \
+--with-boot-jdk=/usr/lib/jvm/java-1.11.0-openjdk \
 --x-includes=/usr/include/ \
 --x-libraries=/usr/lib64 \
 --with-extra-cflags="-O3 -g1" \
@@ -92,12 +92,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548275811
+export SOURCE_DATE_EPOCH=1548284416
 make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1548275811
+export SOURCE_DATE_EPOCH=1548284416
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
