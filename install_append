@@ -30,7 +30,6 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner %{buildroot}/usr/bin/jarsigner11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javac %{buildroot}/usr/bin/javac11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc %{buildroot}/usr/bin/javadoc11
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javah %{buildroot}/usr/bin/javah11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javap %{buildroot}/usr/bin/javap11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd %{buildroot}/usr/bin/jcmd11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole %{buildroot}/usr/bin/jconsole11
