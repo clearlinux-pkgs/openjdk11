@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.2+9
-Release  : 3
+Release  : 4
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Summary  : No detailed summary available
@@ -92,12 +92,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548284416
+export SOURCE_DATE_EPOCH=1552324743
+export LDFLAGS="${LDFLAGS} -fno-lto"
 make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1548284416
+export SOURCE_DATE_EPOCH=1552324743
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
@@ -132,7 +133,6 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner %{buildroot}/usr/bin/jarsigner11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javac %{buildroot}/usr/bin/javac11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc %{buildroot}/usr/bin/javadoc11
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javah %{buildroot}/usr/bin/javah11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javap %{buildroot}/usr/bin/javap11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd %{buildroot}/usr/bin/jcmd11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole %{buildroot}/usr/bin/jconsole11
@@ -760,7 +760,6 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/xjc %{buildroot}/usr/bin/xjc11
 /usr/bin/java11
 /usr/bin/javac11
 /usr/bin/javadoc11
-/usr/bin/javah11
 /usr/bin/javap11
 /usr/bin/jcmd11
 /usr/bin/jconsole11
