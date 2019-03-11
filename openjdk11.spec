@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.2+9
-Release  : 5
+Release  : 6
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Summary  : No detailed summary available
@@ -92,13 +92,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552327284
+export SOURCE_DATE_EPOCH=1552341809
 export LDFLAGS="${LDFLAGS} -fno-lto"
 make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1552327284
+export SOURCE_DATE_EPOCH=1552341809
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
@@ -116,38 +116,38 @@ ln -s /var/cache/ca-certs/compat/ca-roots.keystore %{buildroot}/usr/lib/jvm/java
 mkdir -p %{buildroot}/usr/lib64
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so %{buildroot}/usr/lib64/libjli11.so
 mkdir -p %{buildroot}/usr/bin
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc %{buildroot}/usr/bin/jaotc
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner %{buildroot}/usr/bin/jarsigner
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/java %{buildroot}/usr/bin/java
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javac %{buildroot}/usr/bin/javac
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc %{buildroot}/usr/bin/javadoc
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javap %{buildroot}/usr/bin/javap
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd %{buildroot}/usr/bin/jcmd
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole %{buildroot}/usr/bin/jconsole
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdb %{buildroot}/usr/bin/jdb
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeprscan %{buildroot}/usr/bin/jdeprscan
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeps %{buildroot}/usr/bin/jdeps
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jhsdb %{buildroot}/usr/bin/jhsdb
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jimage %{buildroot}/usr/bin/jimage
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jinfo %{buildroot}/usr/bin/jinfo
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jjs %{buildroot}/usr/bin/jjs
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jlink %{buildroot}/usr/bin/jlink
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jmap %{buildroot}/usr/bin/jmap
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jmod %{buildroot}/usr/bin/jmod
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jps %{buildroot}/usr/bin/jps
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jrunscript %{buildroot}/usr/bin/jrunscript
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jshell %{buildroot}/usr/bin/jshell
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstack %{buildroot}/usr/bin/jstack
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstat %{buildroot}/usr/bin/jstat
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstatd %{buildroot}/usr/bin/jstatd
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/keytool  %{buildroot}/usr/bin/keytool
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/pack200  %{buildroot}/usr/bin/pack200
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmic  %{buildroot}/usr/bin/rmic
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmid  %{buildroot}/usr/bin/rmid
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmiregistry %{buildroot}/usr/bin/rmiregistry
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/serialver %{buildroot}/usr/bin/serialver
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack200
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc %{buildroot}/usr/bin/jaotc11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner %{buildroot}/usr/bin/jarsigner11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/java %{buildroot}/usr/bin/java11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javac %{buildroot}/usr/bin/javac11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc %{buildroot}/usr/bin/javadoc11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/javap %{buildroot}/usr/bin/javap11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd %{buildroot}/usr/bin/jcmd11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole %{buildroot}/usr/bin/jconsole11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdb %{buildroot}/usr/bin/jdb11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeprscan %{buildroot}/usr/bin/jdeprscan11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeps %{buildroot}/usr/bin/jdeps11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jhsdb %{buildroot}/usr/bin/jhsdb11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jimage %{buildroot}/usr/bin/jimage11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jinfo %{buildroot}/usr/bin/jinfo11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jjs %{buildroot}/usr/bin/jjs11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jlink %{buildroot}/usr/bin/jlink11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jmap %{buildroot}/usr/bin/jmap11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jmod %{buildroot}/usr/bin/jmod11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jps %{buildroot}/usr/bin/jps11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jrunscript %{buildroot}/usr/bin/jrunscript11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jshell %{buildroot}/usr/bin/jshell11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstack %{buildroot}/usr/bin/jstack11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstat %{buildroot}/usr/bin/jstat11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jstatd %{buildroot}/usr/bin/jstatd11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/keytool  %{buildroot}/usr/bin/keytool11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/pack200  %{buildroot}/usr/bin/pack20011
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmic  %{buildroot}/usr/bin/rmic11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmid  %{buildroot}/usr/bin/rmid11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/rmiregistry %{buildroot}/usr/bin/rmiregistry11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/serialver %{buildroot}/usr/bin/serialver11
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack20011
 ## install_append end
 
 %files
@@ -744,38 +744,38 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 
 %files bin
 %defattr(-,root,root,-)
-/usr/bin/jaotc
-/usr/bin/jar
-/usr/bin/jarsigner
-/usr/bin/java
-/usr/bin/javac
-/usr/bin/javadoc
-/usr/bin/javap
-/usr/bin/jcmd
-/usr/bin/jconsole
-/usr/bin/jdb
-/usr/bin/jdeprscan
-/usr/bin/jdeps
-/usr/bin/jhsdb
-/usr/bin/jimage
-/usr/bin/jinfo
-/usr/bin/jjs
-/usr/bin/jlink
-/usr/bin/jmap
-/usr/bin/jmod
-/usr/bin/jps
-/usr/bin/jrunscript
-/usr/bin/jshell
-/usr/bin/jstack
-/usr/bin/jstat
-/usr/bin/jstatd
-/usr/bin/keytool
-/usr/bin/pack200
-/usr/bin/rmic
-/usr/bin/rmid
-/usr/bin/rmiregistry
-/usr/bin/serialver
-/usr/bin/unpack200
+/usr/bin/jaotc11
+/usr/bin/jar11
+/usr/bin/jarsigner11
+/usr/bin/java11
+/usr/bin/javac11
+/usr/bin/javadoc11
+/usr/bin/javap11
+/usr/bin/jcmd11
+/usr/bin/jconsole11
+/usr/bin/jdb11
+/usr/bin/jdeprscan11
+/usr/bin/jdeps11
+/usr/bin/jhsdb11
+/usr/bin/jimage11
+/usr/bin/jinfo11
+/usr/bin/jjs11
+/usr/bin/jlink11
+/usr/bin/jmap11
+/usr/bin/jmod11
+/usr/bin/jps11
+/usr/bin/jrunscript11
+/usr/bin/jshell11
+/usr/bin/jstack11
+/usr/bin/jstat11
+/usr/bin/jstatd11
+/usr/bin/keytool11
+/usr/bin/pack20011
+/usr/bin/rmic11
+/usr/bin/rmid11
+/usr/bin/rmiregistry11
+/usr/bin/serialver11
+/usr/bin/unpack20011
 
 %files dev
 %defattr(-,root,root,-)
