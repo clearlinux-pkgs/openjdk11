@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.2+9
-Release  : 6
+Release  : 7
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Summary  : No detailed summary available
@@ -29,6 +29,8 @@ BuildRequires : libXtst-dev
 BuildRequires : openjdk11
 BuildRequires : openjdk11-dev
 BuildRequires : zip
+Patch1: CVE-2019-2602.patch
+Patch2: CVE-2019-2684.patch
 
 %description
 Welcome to the JDK!
@@ -50,6 +52,7 @@ Group: Development
 Requires: openjdk11-lib = %{version}-%{release}
 Requires: openjdk11-bin = %{version}-%{release}
 Provides: openjdk11-devel = %{version}-%{release}
+Requires: openjdk11 = %{version}-%{release}
 
 %description dev
 dev components for the openjdk11 package.
@@ -65,6 +68,8 @@ lib components for the openjdk11 package.
 
 %prep
 %setup -q -n jdk11u-jdk-11.0.2+9
+%patch1 -p1
+%patch2 -p1
 
 %build
 ## build_prepend content
@@ -92,13 +97,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552341809
+export SOURCE_DATE_EPOCH=1555693539
 export LDFLAGS="${LDFLAGS} -fno-lto"
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1552341809
+export SOURCE_DATE_EPOCH=1555693539
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
