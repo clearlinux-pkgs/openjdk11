@@ -76,15 +76,15 @@ lib components for the openjdk11 package.
 CLR_TRUST_STORE=%{_builddir}/trust-store clrtrust generate
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/g++
-export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-guess-branch-probability"
+export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-guess-branch-probability -fno-lto"
 export CXXFLAGS_JDK="$CXXFLAGS"
 export SYSDEFS="$CXXFLAGS"
 bash configure \
 --with-boot-jdk=/usr/lib/jvm/java-1.11.0-openjdk \
 --x-includes=/usr/include/ \
 --x-libraries=/usr/lib64 \
---with-extra-cflags="-O3 -g1" \
---with-extra-cxxflags="$CXXFLAGS -g1" \
+--with-extra-cflags="-O3 -g1 -fno-lto" \
+--with-extra-cxxflags="$CXXFLAGS -g1 -fno-lto"  \
 --with-zlib=system \
 --enable-unlimited-crypto \
 --with-cacerts-file=%{_builddir}/trust-store/compat/ca-roots.keystore \
@@ -99,15 +99,19 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 export SOURCE_DATE_EPOCH=1555693539
 export LDFLAGS="${LDFLAGS} -fno-lto"
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto"
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto "
 make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
 export SOURCE_DATE_EPOCH=1555693539
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto"
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto "
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
@@ -123,7 +127,7 @@ cp -r build/linux-x86_64-normal-server-release/images/jdk/* %{buildroot}/usr/lib
 rm -f %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 ln -s /var/cache/ca-certs/compat/ca-roots.keystore %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 mkdir -p %{buildroot}/usr/lib64
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so %{buildroot}/usr/lib64/libjli11.so
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli.so %{buildroot}/usr/lib64/libjli11.so
 mkdir -p %{buildroot}/usr/bin
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc %{buildroot}/usr/bin/jaotc11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
