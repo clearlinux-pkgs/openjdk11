@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.2+9
-Release  : 8
+Release  : 9
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.2+9.tar.bz2
 Summary  : No detailed summary available
