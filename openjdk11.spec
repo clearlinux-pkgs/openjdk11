@@ -76,7 +76,7 @@ lib components for the openjdk11 package.
 CLR_TRUST_STORE=%{_builddir}/trust-store clrtrust generate
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/g++
-export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-guess-branch-probability -fno-lto"
+export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-guess-branch-probability -fno-lto -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/"
 export CXXFLAGS_JDK="$CXXFLAGS"
 export SYSDEFS="$CXXFLAGS"
 bash configure \
@@ -108,10 +108,10 @@ make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-er
 
 %install
 export SOURCE_DATE_EPOCH=1555693539
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto"
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/"
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used -fno-lto -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/"
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
