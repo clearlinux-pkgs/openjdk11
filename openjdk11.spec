@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.3
-Release  : 11
+Release  : 12
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.3-ga.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.3-ga.tar.bz2
 Summary  : No detailed summary available
@@ -80,8 +80,8 @@ bash configure \
 --with-boot-jdk=/usr/lib/jvm/java-1.11.0-openjdk \
 --x-includes=/usr/include/ \
 --x-libraries=/usr/lib64 \
---with-extra-cflags="-O3 -g1" \
---with-extra-cxxflags="$CXXFLAGS -g1" \
+--with-extra-cflags="-O3 -g1 -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/" \
+--with-extra-cxxflags="$CXXFLAGS -g1 -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/" \
 --with-zlib=system \
 --enable-unlimited-crypto \
 --with-cacerts-file=%{_builddir}/trust-store/compat/ca-roots.keystore \
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563222162
+export SOURCE_DATE_EPOCH=1563224242
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -107,7 +107,7 @@ make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-er
 
 
 %install
-export SOURCE_DATE_EPOCH=1563222162
+export SOURCE_DATE_EPOCH=1563224242
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
