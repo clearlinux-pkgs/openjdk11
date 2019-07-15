@@ -2,7 +2,6 @@ Configure miss: gdiff
 Configure miss: nawk
 Configure miss: greadlink
 Configure miss: cygpath
-Configure miss: pandoc
 Configure miss: if custom source is suppressed (openjdk-only)
 Configure miss: which variant of the JDK to build
 Configure miss: apt-get
@@ -18,8 +17,6 @@ Configure miss: time
 Configure miss: dtrace
 Configure miss: gpatch
 Configure miss: headless only
-Configure miss: pandoc
-Configure miss: full docs
 Configure miss: gobjcopy
 Configure miss: gobjdump
 Configure miss: jtreg
@@ -31,7 +28,6 @@ Configure miss: sys/sdt.h usability
 Configure miss: sys/sdt.h presence
 Configure miss: sys/sdt.h
 Configure miss: if dtrace should be built
-Configure miss: if zgc should be built
 Configure miss: if jtreg failure handler should be built
 Configure miss: if any translations should be excluded
 Configure miss: whether to use sjavac
