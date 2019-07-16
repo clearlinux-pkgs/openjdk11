@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.3
-Release  : 12
+Release  : 13
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.3-ga.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.3-ga.tar.bz2
 Summary  : No detailed summary available
@@ -94,7 +94,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563224242
+export SOURCE_DATE_EPOCH=1563296776
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -107,7 +107,7 @@ make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-er
 
 
 %install
-export SOURCE_DATE_EPOCH=1563224242
+export SOURCE_DATE_EPOCH=1563296776
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
@@ -123,7 +123,7 @@ cp -r build/linux-x86_64-normal-server-release/images/jdk/* %{buildroot}/usr/lib
 rm -f %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 ln -s /var/cache/ca-certs/compat/ca-roots.keystore %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 mkdir -p %{buildroot}/usr/lib64
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so %{buildroot}/usr/lib64/libjli11.so
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli.so %{buildroot}/usr/lib64/libjli11.so
 mkdir -p %{buildroot}/usr/bin
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc %{buildroot}/usr/bin/jaotc11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
