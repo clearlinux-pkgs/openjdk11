@@ -14,6 +14,8 @@ bash configure \
 --with-zlib=system \
 --enable-unlimited-crypto \
 --with-cacerts-file=%{_builddir}/trust-store/compat/ca-roots.keystore \
+--with-version-opt="" \
+--with-version-pre="" \
 --enable-ccache \
 --disable-warnings-as-errors \
 --prefix=%{buildroot}/usr/lib
