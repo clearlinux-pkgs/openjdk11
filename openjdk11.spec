@@ -4,7 +4,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.4
-Release  : 16
+Release  : 19
 URL      : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.4-ga.tar.bz2
 Source0  : http://hg.openjdk.java.net/jdk-updates/jdk11u/archive/jdk-11.0.4-ga.tar.bz2
 Summary  : No detailed summary available
@@ -13,6 +13,8 @@ License  : BSD-3-Clause GPL-2.0 Libpng MIT
 Requires: openjdk11-bin = %{version}-%{release}
 Requires: openjdk11-lib = %{version}-%{release}
 BuildRequires : alsa-lib-dev
+BuildRequires : apache-ant
+BuildRequires : buildreq-mvn
 BuildRequires : ca-certs
 BuildRequires : ccache
 BuildRequires : cups-dev
@@ -30,6 +32,7 @@ BuildRequires : openjdk11
 BuildRequires : openjdk11-dev
 BuildRequires : pandoc
 BuildRequires : zip
+Patch1: 0001-Rename-jli-as-jli11.patch
 
 %description
 Welcome to the JDK!
@@ -67,6 +70,7 @@ lib components for the openjdk11 package.
 
 %prep
 %setup -q -n jdk11u-jdk-11.0.4-ga
+%patch1 -p1
 
 %build
 ## build_prepend content
@@ -76,6 +80,8 @@ export CXX=/usr/bin/g++
 export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-error -fno-delete-null-pointer-checks -fno-guess-branch-probability"
 export CXXFLAGS_JDK="$CXXFLAGS"
 export SYSDEFS="$CXXFLAGS"
+cp -r src/java.base/share/native/libjli src/java.base/share/native/libjli11
+cp -r src/java.base/unix/native/libjli src/java.base/unix/native/libjli11
 bash configure \
 --with-boot-jdk=/usr/lib/jvm/java-1.11.0-openjdk \
 --x-includes=/usr/include/ \
@@ -96,7 +102,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564102224
+export SOURCE_DATE_EPOCH=1565992536
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -109,7 +115,7 @@ make images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-er
 
 
 %install
-export SOURCE_DATE_EPOCH=1564102224
+export SOURCE_DATE_EPOCH=1565992536
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/LICENSE
@@ -125,7 +131,8 @@ cp -r build/linux-x86_64-normal-server-release/images/jdk/* %{buildroot}/usr/lib
 rm -f %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 ln -s /var/cache/ca-certs/compat/ca-roots.keystore %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/security/cacerts
 mkdir -p %{buildroot}/usr/lib64
-ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli.so %{buildroot}/usr/lib64/libjli11.so
+chmod 755 %{buildroot}/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so
+ln -s /usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so %{buildroot}/usr/lib64/libjli11.so
 mkdir -p %{buildroot}/usr/bin
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc %{buildroot}/usr/bin/jaotc11
 ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/jar %{buildroot}/usr/bin/jar11
@@ -651,7 +658,7 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jexec.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jfr/default.jfc
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jfr/profile.jfc
-/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli.debuginfo
+/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jrt-fs.jar
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jspawnhelper
 /usr/lib/jvm/java-1.11.0-openjdk/lib/jspawnhelper.debuginfo
@@ -800,11 +807,10 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/include/jvmticmlr.h
 /usr/lib/jvm/java-1.11.0-openjdk/include/linux/jawt_md.h
 /usr/lib/jvm/java-1.11.0-openjdk/include/linux/jni_md.h
-/usr/lib64/libjli11.so
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli.so
+/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/libjli11.so
 /usr/lib/jvm/java-1.11.0-openjdk/lib/libattach.so
 /usr/lib/jvm/java-1.11.0-openjdk/lib/libawt.so
 /usr/lib/jvm/java-1.11.0-openjdk/lib/libawt_headless.so
@@ -842,3 +848,4 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/lib/libzip.so
 /usr/lib/jvm/java-1.11.0-openjdk/lib/server/libjsig.so
 /usr/lib/jvm/java-1.11.0-openjdk/lib/server/libjvm.so
+/usr/lib64/libjli11.so

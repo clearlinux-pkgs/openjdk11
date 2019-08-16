@@ -3,10 +3,12 @@ VTK
 Z3
 apache-hadoop
 apache-spark
+ceph
+cmake
 compat-mariadb-soname18
 libjpeg-turbo
 mariadb
 openjdk11
-openjdk12
+renderdoc
 supertuxkart
 upm
