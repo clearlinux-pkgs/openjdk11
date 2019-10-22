@@ -1,7 +1,7 @@
-From c7f98bce338bd1157fb5beb7ddacbaedca26cae5 Mon Sep 17 00:00:00 2001
+From 3404c8886a80c5b881f98aa2c22e24fc32781608 Mon Sep 17 00:00:00 2001
 From: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
-Date: Thu, 8 Aug 2019 20:02:15 +0000
-Subject: [PATCH] Rename jli as jli11
+Date: Tue, 22 Oct 2019 09:06:29 -0700
+Subject: [PATCH] Rename
 
 ---
  make/launcher/LauncherCommon.gmk | 4 ++--
@@ -10,25 +10,26 @@ Subject: [PATCH] Rename jli as jli11
  3 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/make/launcher/LauncherCommon.gmk b/make/launcher/LauncherCommon.gmk
-index 8736d8f00..c54dfb8ee 100644
+index ac355a44a..8f7f5c9b8 100644
 --- a/make/launcher/LauncherCommon.gmk
 +++ b/make/launcher/LauncherCommon.gmk
-@@ -195,8 +195,8 @@ define SetupBuildLauncherBody
-           -L$(SUPPORT_OUTPUTDIR)/modules_libs/java.base/jli, \
+@@ -179,9 +179,9 @@ define SetupBuildLauncherBody
+           -L$(call FindLibDirForModule, java.base)/jli, \
        LIBS := $(JDKEXE_LIBS) $$($1_LIBS), \
        LIBS_unix := $$($1_LIBS_unix), \
 -      LIBS_linux := -lpthread -ljli $(LIBDL), \
--      LIBS_solaris := -ljli -lthread $(LIBDL), \
 +      LIBS_linux := -lpthread -ljli11 $(LIBDL), \
+       LIBS_macosx := -ljli, \
+-      LIBS_solaris := -ljli -lthread $(LIBDL), \
 +      LIBS_solaris := -ljli11 -lthread $(LIBDL), \
        LIBS_windows := $$($1_WINDOWS_JLI_LIB) \
            $(SUPPORT_OUTPUTDIR)/native/java.base/libjava/java.lib advapi32.lib \
            $$($1_LIBS_windows), \
 diff --git a/make/lib/CoreLibraries.gmk b/make/lib/CoreLibraries.gmk
-index b7c498665..61321da5b 100644
+index ee52f9399..78a0f6f19 100644
 --- a/make/lib/CoreLibraries.gmk
 +++ b/make/lib/CoreLibraries.gmk
-@@ -255,7 +255,7 @@ ifneq ($(USE_EXTERNAL_LIBZ), true)
+@@ -232,7 +232,7 @@ ifneq ($(USE_EXTERNAL_LIBZ), true)
  endif
  
  $(eval $(call SetupJdkLibrary, BUILD_LIBJLI, \
@@ -38,10 +39,10 @@ index b7c498665..61321da5b 100644
      EXCLUDE_FILES := $(LIBJLI_EXCLUDE_FILES), \
      EXTRA_FILES := $(LIBJLI_EXTRA_FILES), \
 diff --git a/make/lib/Lib-java.instrument.gmk b/make/lib/Lib-java.instrument.gmk
-index 7e625e3a0..0d4d9614b 100644
+index 9acde85ff..2d22e5675 100644
 --- a/make/lib/Lib-java.instrument.gmk
 +++ b/make/lib/Lib-java.instrument.gmk
-@@ -59,8 +59,8 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBINSTRUMENT, \
+@@ -55,8 +55,8 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBINSTRUMENT, \
      LDFLAGS_aix := -L$(SUPPORT_OUTPUTDIR)/native/java.base, \
      LIBS := $(JDKLIB_LIBS), \
      LIBS_unix := -ljava -ljvm $(LIBZ_LIBS), \
@@ -50,11 +51,11 @@ index 7e625e3a0..0d4d9614b 100644
 +    LIBS_linux := -ljli11 $(LIBDL), \
 +    LIBS_solaris := -ljli11 $(LIBDL), \
      LIBS_aix := -liconv -ljli_static $(LIBDL), \
-     LIBS_macosx := -liconv -framework Cocoa -framework Security \
-         -framework ApplicationServices \
-@@ -72,7 +72,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBINSTRUMENT, \
- ifneq ($(filter $(OPENJDK_TARGET_OS), macosx windows aix), )
-   $(BUILD_LIBINSTRUMENT): $(call FindStaticLib, java.base, jli_static)
+     LIBS_macosx := -ljli -liconv -framework Cocoa -framework Security \
+         -framework ApplicationServices, \
+@@ -69,7 +69,7 @@ ifeq ($(OPENJDK_TARGET_OS), aix)
+ else ifeq ($(OPENJDK_TARGET_OS), windows)
+   $(BUILD_LIBINSTRUMENT): $(call FindLib, java.base, jli)
  else
 -  $(BUILD_LIBINSTRUMENT): $(call FindLib, java.base, jli, /jli)
 +  $(BUILD_LIBINSTRUMENT): $(call FindLib, java.base, jli11, /jli)
@@ -62,5 +63,5 @@ index 7e625e3a0..0d4d9614b 100644
  $(BUILD_LIBINSTRUMENT): $(call FindLib, java.base, java)
  
 -- 
-2.22.0
+2.23.0
 

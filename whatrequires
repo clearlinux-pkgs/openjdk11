@@ -1,14 +1,8 @@
 # This file contains recursive sources that require this package
-VTK
-Z3
 apache-hadoop
 apache-spark
 ceph
-cmake
 compat-mariadb-soname18
-libjpeg-turbo
+gradle
 mariadb
 openjdk11
-renderdoc
-supertuxkart
-upm
