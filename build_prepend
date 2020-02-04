@@ -13,6 +13,10 @@ bash configure \
 --x-libraries=/usr/lib64 \
 --with-extra-cflags="-O3 -g1 -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/" \
 --with-extra-cxxflags="$CXXFLAGS -g1 -Wl,-rpath,/usr/lib/jvm/java-1.11.0-openjdk/lib/jli/" \
+--with-libjpeg=system \
+--with-giflib=system \
+--with-libpng=system \
+--with-lcms=system \
 --with-zlib=system \
 --enable-unlimited-crypto \
 --with-cacerts-file=%{_builddir}/trust-store/compat/ca-roots.keystore \

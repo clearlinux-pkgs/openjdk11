@@ -5,6 +5,7 @@ ca-certs
 ccache
 cups-dev
 freetype-dev
+lcms2-dev
 libX11-dev
 libXext-dev
 libXi-dev

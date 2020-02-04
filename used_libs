@@ -5,7 +5,11 @@ libasound.so.2
 libc.so.6
 libdl.so.2
 libfreetype.so.6
+libgif.so.7
+libjpeg.so.62
+liblcms2.so.2
 libm.so.6
+libpng16.so.16
 libpthread.so.0
 libthread_db.so.1
 libz.so.1
