@@ -4,6 +4,7 @@ Configure miss: greadlink
 Configure miss: cygpath
 Configure miss: if custom source is suppressed (openjdk-only)
 Configure miss: which variant of the JDK to build
+Configure miss: if absolute paths should be allowed in the build output
 Configure miss: apt-get
 Configure miss: yum
 Configure miss: brew

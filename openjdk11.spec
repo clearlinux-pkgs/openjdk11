@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCB26ABC29FF32E37 (openjdk@redhat.com)
 #
 Name     : openjdk11
-Version  : 11.0.6
-Release  : 22
-URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.6-ga.tar.xz
-Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.6-ga.tar.xz
-Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.6-ga.tar.xz.sig
+Version  : 11.0.7
+Release  : 23
+URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz
+Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz
+Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 ICU Libpng MIT
@@ -37,7 +37,6 @@ BuildRequires : pandoc
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : zip
 Patch1: 0001-Rename-jli-as-jli11.patch
-Patch2: fix-make-4.3.patch
 
 %description
 Welcome to the JDK!
@@ -74,10 +73,9 @@ lib components for the openjdk11 package.
 
 
 %prep
-%setup -q -n jdk-11.0.6-ga
-cd %{_builddir}/jdk-11.0.6-ga
+%setup -q -n jdk-11.0.7-ga
+cd %{_builddir}/jdk-11.0.7-ga
 %patch1 -p1
-%patch2 -p1
 
 %build
 ## build_prepend content
@@ -115,28 +113,28 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580837588
+export SOURCE_DATE_EPOCH=1587493428
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 make  images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1580837588
+export SOURCE_DATE_EPOCH=1587493428
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
-cp %{_builddir}/jdk-11.0.6-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
-cp %{_builddir}/jdk-11.0.6-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
-cp %{_builddir}/jdk-11.0.6-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
-cp %{_builddir}/jdk-11.0.6-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
-cp %{_builddir}/jdk-11.0.6-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
-cp %{_builddir}/jdk-11.0.6-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
+cp %{_builddir}/jdk-11.0.7-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
+cp %{_builddir}/jdk-11.0.7-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
+cp %{_builddir}/jdk-11.0.7-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
+cp %{_builddir}/jdk-11.0.7-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
+cp %{_builddir}/jdk-11.0.7-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
+cp %{_builddir}/jdk-11.0.7-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
 %make_install
 ## install_append content
 rm -rf %{buildroot}
@@ -445,7 +443,6 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.desktop/colorimaging.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.desktop/harfbuzz.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.desktop/mesa3d.md
-/usr/lib/jvm/java-1.11.0-openjdk/legal/java.desktop/opengl.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.desktop/xwd.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.instrument/ADDITIONAL_LICENSE_INFO
 /usr/lib/jvm/java-1.11.0-openjdk/legal/java.instrument/ASSEMBLY_EXCEPTION

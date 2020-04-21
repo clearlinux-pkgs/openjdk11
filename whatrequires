@@ -1,10 +1,7 @@
 # This file contains recursive sources that require this package
 OpenColorIO
-ParaView
-apache-hadoop
-apache-spark
 ceph
 compat-mariadb-soname18
-gradle
+gmsh
 mariadb
 openjdk11
