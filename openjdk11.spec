@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCB26ABC29FF32E37 (openjdk@redhat.com)
 #
 Name     : openjdk11
-Version  : 11.0.7
-Release  : 23
-URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz
-Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz
-Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.7-ga.tar.xz.sig
+Version  : 11.0.9
+Release  : 24
+URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz
+Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz
+Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 ICU Libpng MIT
@@ -73,8 +73,8 @@ lib components for the openjdk11 package.
 
 
 %prep
-%setup -q -n jdk-11.0.7-ga
-cd %{_builddir}/jdk-11.0.7-ga
+%setup -q -n jdk-11.0.9-ga
+cd %{_builddir}/jdk-11.0.9-ga
 %patch1 -p1
 
 %build
@@ -113,7 +113,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587493428
+export SOURCE_DATE_EPOCH=1603412612
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -126,15 +126,15 @@ make  images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-e
 
 
 %install
-export SOURCE_DATE_EPOCH=1587493428
+export SOURCE_DATE_EPOCH=1603412612
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
-cp %{_builddir}/jdk-11.0.7-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
-cp %{_builddir}/jdk-11.0.7-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
-cp %{_builddir}/jdk-11.0.7-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
-cp %{_builddir}/jdk-11.0.7-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
-cp %{_builddir}/jdk-11.0.7-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
-cp %{_builddir}/jdk-11.0.7-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
+cp %{_builddir}/jdk-11.0.9-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
+cp %{_builddir}/jdk-11.0.9-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
+cp %{_builddir}/jdk-11.0.9-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
+cp %{_builddir}/jdk-11.0.9-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
+cp %{_builddir}/jdk-11.0.9-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
+cp %{_builddir}/jdk-11.0.9-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
 %make_install
 ## install_append content
 rm -rf %{buildroot}
@@ -187,38 +187,71 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 %files
 %defattr(-,root,root,-)
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jaotc.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jar
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jar.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jarsigner.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/java
+/usr/lib/jvm/java-1.11.0-openjdk/bin/java.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/javac
+/usr/lib/jvm/java-1.11.0-openjdk/bin/javac.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc
+/usr/lib/jvm/java-1.11.0-openjdk/bin/javadoc.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/javap
+/usr/lib/jvm/java-1.11.0-openjdk/bin/javap.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jcmd.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jconsole.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jdb
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jdb.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeprscan
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jdeprscan.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jdeps
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jdeps.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jfr
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jfr.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jhsdb
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jhsdb.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jimage
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jimage.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jinfo
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jinfo.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jjs
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jjs.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jlink
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jlink.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jmap
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jmap.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jmod
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jmod.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jps
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jps.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jrunscript
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jrunscript.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jshell
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jshell.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jstack
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jstack.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jstat
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jstat.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/jstatd
+/usr/lib/jvm/java-1.11.0-openjdk/bin/jstatd.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/keytool
+/usr/lib/jvm/java-1.11.0-openjdk/bin/keytool.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/pack200
+/usr/lib/jvm/java-1.11.0-openjdk/bin/pack200.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/rmic
+/usr/lib/jvm/java-1.11.0-openjdk/bin/rmic.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/rmid
+/usr/lib/jvm/java-1.11.0-openjdk/bin/rmid.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/rmiregistry
+/usr/lib/jvm/java-1.11.0-openjdk/bin/rmiregistry.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/serialver
+/usr/lib/jvm/java-1.11.0-openjdk/bin/serialver.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200
+/usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200.debuginfo
 /usr/lib/jvm/java-1.11.0-openjdk/conf/logging.properties
 /usr/lib/jvm/java-1.11.0-openjdk/conf/management/jmxremote.access
 /usr/lib/jvm/java-1.11.0-openjdk/conf/management/jmxremote.password.template
@@ -408,6 +441,7 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.management.jfr.jmod
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.management.jmod
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.naming.dns.jmod
+/usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.naming.ldap.jmod
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.naming.rmi.jmod
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.net.jmod
 /usr/lib/jvm/java-1.11.0-openjdk/jmods/jdk.pack.jmod
@@ -571,7 +605,6 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/ADDITIONAL_LICENSE_INFO
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/ASSEMBLY_EXCEPTION
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/LICENSE
-/usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/jquery-migrate.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/jquery.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/jqueryUI.md
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.javadoc/jszip.md
@@ -623,6 +656,9 @@ ln -s /usr/lib/jvm/java-1.11.0-openjdk/bin/unpack200 %{buildroot}/usr/bin/unpack
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.dns/ADDITIONAL_LICENSE_INFO
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.dns/LICENSE
+/usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.ldap/ADDITIONAL_LICENSE_INFO
+/usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.ldap/ASSEMBLY_EXCEPTION
+/usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.ldap/LICENSE
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.rmi/ADDITIONAL_LICENSE_INFO
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION
 /usr/lib/jvm/java-1.11.0-openjdk/legal/jdk.naming.rmi/LICENSE

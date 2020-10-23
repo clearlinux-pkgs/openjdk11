@@ -1,7 +1,7 @@
 # This file contains recursive sources that require this package
 OpenColorIO
 ceph
-compat-mariadb-soname18
 gmsh
 mariadb
 openjdk11
+openjpeg

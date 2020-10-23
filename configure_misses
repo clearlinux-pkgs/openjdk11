@@ -24,6 +24,7 @@ Configure miss: jtreg
 Configure miss: jtreg test harness
 Configure miss: jib
 Configure miss: if native warnings are errors
+Configure miss: if we should add external native debug symbols to the shipped bundles
 Configure miss: dtrace tool
 Configure miss: sys/sdt.h usability
 Configure miss: sys/sdt.h presence
