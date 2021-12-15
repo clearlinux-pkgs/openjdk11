@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xCB26ABC29FF32E37 (openjdk@redhat.com)
 #
 Name     : openjdk11
-Version  : 11.0.9
+Version  : 11.0.13
 Release  : 25
-URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz
-Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz
-Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.9-ga.tar.xz.sig
+URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz
+Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz
+Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 ICU Libpng MIT
@@ -73,8 +73,8 @@ lib components for the openjdk11 package.
 
 
 %prep
-%setup -q -n jdk-11.0.9-ga
-cd %{_builddir}/jdk-11.0.9-ga
+%setup -q -n jdk-11.0.13-ga
+cd %{_builddir}/jdk-11.0.13-ga
 %patch1 -p1
 
 %build
@@ -129,12 +129,12 @@ make  images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-e
 export SOURCE_DATE_EPOCH=1603412612
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
-cp %{_builddir}/jdk-11.0.9-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
-cp %{_builddir}/jdk-11.0.9-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
-cp %{_builddir}/jdk-11.0.9-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
-cp %{_builddir}/jdk-11.0.9-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
-cp %{_builddir}/jdk-11.0.9-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
-cp %{_builddir}/jdk-11.0.9-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
+cp %{_builddir}/jdk-11.0.13-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
+cp %{_builddir}/jdk-11.0.13-ga/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
+cp %{_builddir}/jdk-11.0.13-ga/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
+cp %{_builddir}/jdk-11.0.13-ga/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
+cp %{_builddir}/jdk-11.0.13-ga/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
+cp %{_builddir}/jdk-11.0.13-ga/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
 %make_install
 ## install_append content
 rm -rf %{buildroot}
