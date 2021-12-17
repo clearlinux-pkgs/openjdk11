@@ -6,13 +6,13 @@
 #
 Name     : openjdk11
 Version  : 11.0.13
-Release  : 25
+Release  : 26
 URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz
 Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz
 Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.13-ga.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 ICU Libpng MIT
+License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 Libpng MIT Unicode-DFS-2016
 Requires: openjdk11-bin = %{version}-%{release}
 Requires: openjdk11-lib = %{version}-%{release}
 BuildRequires : alsa-lib-dev
@@ -113,20 +113,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603412612
+export SOURCE_DATE_EPOCH=1639773879
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
 make  images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1603412612
+export SOURCE_DATE_EPOCH=1639773879
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
 cp %{_builddir}/jdk-11.0.13-ga/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
