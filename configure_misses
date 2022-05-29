@@ -1,35 +1,38 @@
-Configure miss: gdiff
-Configure miss: nawk
-Configure miss: greadlink
-Configure miss: cygpath
-Configure miss: if custom source is suppressed (openjdk-only)
-Configure miss: which variant of the JDK to build
-Configure miss: if absolute paths should be allowed in the build output
+Configure miss: /usr/bin/g++ option to enable C++11 features
+Configure miss: /usr/bin/gcc option to enable C11 features
 Configure miss: apt-get
-Configure miss: yum
 Configure miss: brew
-Configure miss: port
-Configure miss: pkgutil
-Configure miss: pkgadd
-Configure miss: output-sync value
-Configure miss: greadelf
-Configure miss: hg
-Configure miss: time
+Configure miss: cygpath
 Configure miss: dtrace
-Configure miss: gpatch
-Configure miss: headless only
+Configure miss: dtrace tool
+Configure miss: gdiff
 Configure miss: gobjcopy
 Configure miss: gobjdump
-Configure miss: jtreg
-Configure miss: jtreg test harness
-Configure miss: jib
-Configure miss: if native warnings are errors
-Configure miss: if we should add external native debug symbols to the shipped bundles
-Configure miss: dtrace tool
-Configure miss: sys/sdt.h usability
-Configure miss: sys/sdt.h presence
-Configure miss: sys/sdt.h
+Configure miss: gpatch
+Configure miss: greadelf
+Configure miss: greadlink
+Configure miss: headless only
+Configure miss: hg
+Configure miss: if BUILD is x86
+Configure miss: if TARGET is x86
+Configure miss: if absolute paths should be allowed in the build output
+Configure miss: if any translations should be excluded
+Configure miss: if custom source is suppressed (openjdk-only)
 Configure miss: if dtrace should be built
 Configure miss: if jtreg failure handler should be built
-Configure miss: if any translations should be excluded
+Configure miss: if native warnings are errors
+Configure miss: if we should add external native debug symbols to the shipped bundles
+Configure miss: jib
+Configure miss: jtreg
+Configure miss: jtreg test harness
+Configure miss: nawk
+Configure miss: output-sync value
+Configure miss: pkgadd
+Configure miss: pkgutil
+Configure miss: port
+Configure miss: sys/sdt.h
+Configure miss: time
+Configure miss: whether -R must be followed by a space
 Configure miss: whether to use sjavac
+Configure miss: which variant of the JDK to build
+Configure miss: yum
