@@ -21,6 +21,7 @@ Configure miss: if custom source is suppressed (openjdk-only)
 Configure miss: if dtrace should be built
 Configure miss: if jtreg failure handler should be built
 Configure miss: if native warnings are errors
+Configure miss: if static link of stdc++ is possible
 Configure miss: if we should add external native debug symbols to the shipped bundles
 Configure miss: jib
 Configure miss: jtreg

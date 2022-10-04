@@ -6,7 +6,7 @@
 #
 Name     : openjdk11
 Version  : 11.0.15
-Release  : 27
+Release  : 28
 URL      : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.15-ga.tar.xz
 Source0  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.15-ga.tar.xz
 Source1  : https://openjdk-sources.osci.io/openjdk11/openjdk-11.0.15-ga.tar.xz.sig
@@ -113,28 +113,28 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1653802932
+export SOURCE_DATE_EPOCH=1664920048
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 make  images WARNINGS_ARE_ERRORS="-Wno-error" CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error"
 
 
 %install
-export SOURCE_DATE_EPOCH=1653802932
+export SOURCE_DATE_EPOCH=1664920048
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/openjdk11
-cp %{_builddir}/jdk-11.0.15+10/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f
-cp %{_builddir}/jdk-11.0.15+10/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1
-cp %{_builddir}/jdk-11.0.15+10/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f
-cp %{_builddir}/jdk-11.0.15+10/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f
-cp %{_builddir}/jdk-11.0.15+10/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb
-cp %{_builddir}/jdk-11.0.15+10/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304
+cp %{_builddir}/jdk-%{version}+10/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/a4fb972c240d89131ee9e16b845cd302e0ecb05f || :
+cp %{_builddir}/jdk-%{version}+10/src/java.desktop/share/native/libsplashscreen/giflib/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/f9c9a2d3495a0766b4cf20d4b90cfe714dab3dc1 || :
+cp %{_builddir}/jdk-%{version}+10/src/java.desktop/share/native/libsplashscreen/libpng/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/fc3951ba26fe1914759f605696a1d23e3b41766f || :
+cp %{_builddir}/jdk-%{version}+10/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/COPYING %{buildroot}/usr/share/package-licenses/openjdk11/12f0c48a0be5fb271ccd2f1de671e747c511166f || :
+cp %{_builddir}/jdk-%{version}+10/src/jdk.localedata/share/classes/sun/util/cldr/resources/unicode-license.txt %{buildroot}/usr/share/package-licenses/openjdk11/9c866fa85be5a5919e139e4b7b0e42a117a6b3cb || :
+cp %{_builddir}/jdk-%{version}+10/test/fmw/gtest/LICENSE %{buildroot}/usr/share/package-licenses/openjdk11/5a2314153eadadc69258a9429104cd11804ea304 || :
 %make_install
 ## install_append content
 rm -rf %{buildroot}
